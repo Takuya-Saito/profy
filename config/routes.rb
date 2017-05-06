@@ -3,4 +3,5 @@ Rails.application.routes.draw do
 #  root to: 'top#index'
   root controller: :top, action: :index
   resources :users, only: [:show, :edit, :update]
+  resources :groups, only: [:show, :edit, :update]
 end
