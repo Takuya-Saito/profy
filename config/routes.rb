@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   root controller: :top, action: :index
   resources :users, only: [:show, :edit, :update]
   resources :groups, only: [:show, :edit, :update]
+  resources :questions, only: [:create]
 end
