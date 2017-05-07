@@ -14,9 +14,6 @@
     <div class="questioned">
       <span>回答<%= question.answers.count %>件</span>
     </div>
-    <%= form_tag(new_answer_path, method: :get, class: "question_submit") do %>
-      <%= hidden_field_tag(:question_id, question.id) %>
-      <%= submit_tag("回答する") %>
-    <% end %>
+    <%= link_to '回答する', "/questions/#{question.id}/answers/new/"  %>
   </div>
 </div>
