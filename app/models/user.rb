@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   belongs_to :group
   has_many :questions, ->{ order("created_at DESC") }
   has_many :answers, ->{ order("updated_at DESC") }
+  has_many :answered_questions, through: :answers, source: :question
 
   #validation
   before_validation :group_key_to_id, if: :has_group_key?
