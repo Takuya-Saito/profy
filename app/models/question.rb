@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-
+  after_create :create_feed_content
   #association
   belongs_to :user
   belongs_to :group
@@ -13,4 +13,8 @@ class Question < ActiveRecord::Base
     Answer.find_by(user_id: user_id, question_id: self.id)
   end
 
+  private
+  def create_feed_content
+    self.feed_content = FeedContent.create(group_id: self.group_id, updated_at: self.updated_at)
+  end
 end
