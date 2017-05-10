@@ -13,6 +13,11 @@ class Question < ActiveRecord::Base
     Answer.find_by(user_id: user_id, question_id: self.id)
   end
 
+  def answered?(user)
+    # レシーバである質問に、現在ログインしているユーザーが既に回答している場合はtrueを、回答していない場合はfalseを返す
+    self.answers.exists?(user_id: user.id)
+  end
+
   private
   def create_feed_content
     self.feed_content = FeedContent.create(group_id: self.group_id, updated_at: self.updated_at)
